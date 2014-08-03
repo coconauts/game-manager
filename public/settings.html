@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Game Manager - settings</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        
+        <script languaje='javascript' src="js/jquery/jquery-1.9.1.min.js"></script>
+            
+        <script languaje='javascript' src="js/foundation/modernizr.js"></script>
+        <script languaje='javascript' src="js/foundation/vendor/zepto.js"></script>
+        <script languaje='javascript' src="js/foundation/foundation.min.js"></script> 
+        
+        <link rel="stylesheet" href="css/style.css" >
+
+        <link rel='stylesheet' href='css/foundation/normalize.css'>
+        <link rel='stylesheet' href='css/foundation/foundation.min.css'>
+        
+        <script languaje='javascript' src="js/gameManager/file.js"></script> 
+        <script languaje='javascript' src="js/gameManager/utils.js"></script> 
+        <script languaje='javascript' src="js/gameManager/view.js"></script> 
+        <script languaje='javascript' src="js/gameManager/settings.js"></script> 
+
+        <script languaje='javascript'>
+        $( document ).ready(function() {
+            buildSettings();
+            
+            $("#addSettings").click(function(){buildPlatformSetting(defaultSettings);});
+            $("#saveSettings").click(function(){saveSettings();});
+        });
+        
+        </script> 
+
+    </head>
+    
+    <body>
+
+        <nav class="top-bar">
+
+                <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                        <h1> <a href="/"> Game Manager</a> </h1>
+                </li>
+                <li class="toggle-topbar menu-menuIcon"><a href="#"><span>menu</span></a></li>
+                </ul>
+
+                <section class="top-bar-section">
+                
+                <ul class="left">
+                <li class="divider"></li>
+                    <li> <a href="/settings.html"> Settings</a> </li>
+                </ul>
+                <!-- Right Nav Section -->
+                <ul class="right login">
+                </ul>
+                </section>
+        </nav>
+
+        
+    <div class="row">
+        <div class='large-12 columns' id="settings">
+            <table id="settingsTable"> 
+                <tr>
+                    <th>Platform</th>
+                    <th>Paths</th>
+                    <!--<th>Covers Path</th>
+                    <th>Executable</th>-->
+                    <th></th>
+                </tr>
+            </table>
+            <button id="addSettings" >+</button>
+            <button id="saveSettings">Save </button>
+        </div>
+    </div>
+
+    </body>
+    <script type="text/javascript">$(document).foundation();</script>
+
+</html>

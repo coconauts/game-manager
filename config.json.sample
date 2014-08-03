@@ -1,0 +1,8 @@
+{
+  "port" : 8890,
+  "root" : "<music path>", 
+  "maxFiles" : 50,
+  "db": "/var/sqlite/gramola2.db",
+}
+ 
+

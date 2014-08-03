@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Game Manager",
+  "description": "Game manager",
+  "version": "0.1",
+  "app": {
+    "launch": {
+      "web_url": "http://localhost:8888"
+    }
+  },
+  "icons": { "16": "icon.png", "128": "icon.png" }
+}

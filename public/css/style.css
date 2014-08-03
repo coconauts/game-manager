@@ -1,0 +1,261 @@
+html{
+    background-color: #333 !important;
+}
+body{
+    background-color: #333 !important;
+    color:white;
+    overflow:auto;
+}
+p {
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+/*a, img {
+	width:32px;
+	height:32px;
+    border:none ;
+    outline: none ;
+}
+*/
+#backgroundImage{
+    width:100%;
+    height:95%;
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+    position:absolute;
+    top:45px;
+    overflow:visible;
+}
+/* Game details
+*/
+
+.border {
+    border:5px solid white;
+    border-radius:10px;
+    background-color: rgba(100,100,100,0.5);
+}
+#gameDetails {
+    text-align:center;
+    height:600px;
+}
+#gameName {
+    font-size: x-large;
+    width:465px;
+    height:80px;
+    display:none;
+}
+
+#gameImage {
+    position:absolute;
+    top:100px;
+    left:15px;
+    width:300px;
+    max-height:235px;
+    display:none;
+}
+#gameDescription{
+    width:465px;
+    position:absolute;
+    font-size:small;
+    top:350px;
+    height:120px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    display:none;
+}
+#gameYear{
+ position:absolute;
+    top:100px;
+    left:350px;
+    width:125px;
+    height:50px;
+    display:none;
+    padding-top:10px;
+}
+#gameRating{
+ position:absolute;
+    top:175px;
+    left:350px;
+    width:125px;
+    height:50px;
+    display:none;
+    padding-top:10px;
+}
+#gameDeveloper{
+ position:absolute;
+    top:250px;
+    left:350px;
+    width:125px;
+    height:85px;
+    display:none;
+    overflow:hidden;
+}
+th{
+        color:white !important;
+}
+
+/* SETTINGS*/
+#settingsTable{
+    width:100%;
+    background-color:inherit;
+    border:0px;
+    
+}
+select[name=platform] {  
+    /*width:200px;*/
+}
+.inputSettings {
+    width:500px;
+}
+.selectSettings{
+    width:350px;
+}
+.labelSettings{
+   color:white;
+}
+table tr  {
+   background-color:inherit !important;
+}
+/* ls style */
+.searchBar{
+    height:50px;
+    padding:0px;
+    margin:10px  0 10px 0;
+}
+#selector{}
+#searchInput{
+    width:260px;
+    height:100%;
+    font-size:large;
+}
+#listFiles{
+    padding:20px;
+    width: 480px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    height:450px;
+}
+#listFiles p {
+    color:gray;
+}
+#listFiles p.selected {
+    color:white;
+    /* font-weight:bold;*/
+}
+.files{
+    vertical-align:top;	
+    width:100%;
+}
+
+.filename{
+    width:250px;
+    position:absolute;
+    top:2px;
+    left:55px;
+    height:40px;
+    overflow:hidden;
+    font-size:small;
+    font-weight:normal;
+}
+
+.small_icon{
+    
+    width:16px;
+    height:16px;
+}
+
+#gameCount {
+    position:absolute;
+    top:500px;
+    left:50px;
+    display:none;
+    font-size:x-large;
+    font-weight:bold;
+}
+
+#actions {
+    position:absolute;
+    top:500px;
+    display:none;
+}
+#actions p {
+    margin-right:50px;
+}
+
+.icon {
+    background-size: 48px 48px;
+    background-position:center;
+    background-repeat: no-repeat;
+    width:50px;
+    height:50px;
+    margin:1px;
+    display:inline-block;
+}
+
+/*Actions*/
+.img-play {	background-image:url('../images/run-icon.png');}
+.img-todo { background-image:url('../images/todo-icon.png');}
+.img-finish { background-image:url('../images/finish-icon.png');}
+/*Others*/
+.img-search {	background-image:url('../images/search.png');}
+.img-favorite {	background-image:url('../images/heart.png');}
+
+.img-disabled {    
+    opacity: 0.4;
+    filter: alpha(opacity=40); 
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+
+}
+
+.platform-n64 {     background-image:url('../images/platforms/n64-icon.png');}
+.platform-nes {     background-image:url('../images/platforms/nes-icon.png');}
+.platform-snes {     background-image:url('../images/platforms/snes-icon.png');}
+.platform-gb {     background-image:url('../images/platforms/gb-icon.png');}
+.platform-gbc {     background-image:url('../images/platforms/gbc-icon.png');}
+.platform-gba {     background-image:url('../images/platforms/gba-icon.png');}
+.platform-psx {     background-image:url('../images/platforms/psx-icon.png');}
+.platform-gc {     background-image:url('../images/platforms/gc-icon.png');}
+.platform-arcade {     background-image:url('../images/platforms/arcade-icon.png');}
+.platform-dos {     background-image:url('../images/platforms/dos-icon.png');}
+.platform-atari2600 {     background-image:url('../images/platforms/atari2600-icon.png');}
+.platform-win {     background-image:url('../images/platforms/win-icon.png');}
+.platform-md {     background-image:url('../images/platforms/md-icon.png');}
+.platform-scummvm {     background-image:url('../images/platforms/scummvm-icon.png');}
+
+/*OCAROUSEL CHANGES */
+.ocarousel_window_slides img {
+    width:475px; /*same as player width*/
+}
+.carousel_data_div {
+    width:50px;
+    height:50px;
+    border:1px solid;
+    border-radius:30px;
+    padding-top:5px;
+    text-align:center;
+    font-size:x-large;
+    top:100px;
+    position:absolute;
+    background-color: rgba(255,255,255,0.5);
+}
+.carousel_data_right {
+    left:420px;
+}
+.carousel_data_div a {
+    color:black;
+}
+
+/*FOUNDATION FIXES*/
+.left {
+    height:0px;
+}
+.f-dropdown-random{
+    width:50px !important;
+}
+
+.f-dropdown-random li{
+    width: 50px;
+    height:48px;
+}
