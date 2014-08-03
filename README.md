@@ -4,7 +4,7 @@ Web game manager is a “desktop” app built with cutting edge web technologies
 
 More info: http://coconauts.net/projects/game-manager
 
-Demo video: https://www.youtube.com/watch?v=mdmMC4ePWYU&feature=youtu.be
+Demo video: https://www.youtube.com/watch?v=54lXxtYDMrQ&feature=youtu.be
 
 ## Quick guide to run Web Game Manager
 
