@@ -1,8 +1,6 @@
 {
-  "port" : 8890,
-  "root" : "<music path>", 
-  "maxFiles" : 50,
-  "db": "/var/sqlite/gramola2.db",
+  "port" : 8888,
+  "db": "/var/sqlite/game-manager.db"
 }
  
 
