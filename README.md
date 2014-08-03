@@ -1,3 +1,11 @@
+## Description
+
+Web game manager is a “desktop” app built with cutting edge web technologies like node.js and json for indexing your list of videogames and roms. You just need to specify the exec and your local folder with games and snaps to access them immediately.
+
+More info: http://coconauts.net/projects/game-manager
+
+Demo video: https://www.youtube.com/watch?v=mdmMC4ePWYU&feature=youtu.be
+
 ## Quick guide to run Web Game Manager
 
 ### Install nodejs (Ubuntu 13.10)
