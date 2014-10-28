@@ -1,12 +1,28 @@
-{  
-  "name": "game-manager",  
-  "version": "0.1",  
+{
+  "name": "install",
+  "version": "1.0.0",
+  "description": "Game manager",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coconauts/game-manager.git"
+  },
+  "keywords": [
+    "game",
+    "emulators"
+  ],
+  "author": "Javier Rengel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coconauts/game-manager/issues"
+  },
+  "homepage": "https://github.com/coconauts/game-manager",
   "dependencies" : {
     "express" : "4.1.1",
     "sqlite3" : "2.2.3",
     "body-parser" : "1.0.2",
-    "xml2js" : "0.4.2"
-  },  
+    "xml2js": "0.4.4"
+  },
   "engine": {  
     "node": ">=0.10.25"  
   }  

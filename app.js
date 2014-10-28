@@ -15,13 +15,9 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser());
 
 db.serialize(function() {
-  
-  if(!fs.existsSync(database)) {
-    db.run("CREATE TABLE platform (id INTEGER PRIMARY KEY, platform TEXT, roms TEXT, covers TEXT, info TEXT, exec TEXT);");
-    //db.run("CREATE TABLE tag (id INTEGER PRIMARY KEY,type TEXT,platform TEXT,name TEXT);");
-    db.run("CREATE TABLE stats (id INTEGER PRIMARY KEY,platform TEXT,name TEXT,favorite NUMERIC, todo NUMERIC, finish NUMERIC, count NUMERIC);");
-    db.run("CREATE TABLE info (id INTEGER PRIMARY KEY, name TEXT,thegamesdbId TEXT,platform TEXT, description TEXT,releaseDate TEXT,developer TEXT,rating TEXT);");
-  }
+  db.run("CREATE TABLE IF NOT EXISTS platform (id INTEGER PRIMARY KEY, platform TEXT, roms TEXT, covers TEXT, info TEXT, exec TEXT);");
+  db.run("CREATE TABLE IF NOT EXISTS stats (id INTEGER PRIMARY KEY,platform TEXT,name TEXT,favorite NUMERIC, todo NUMERIC, finish NUMERIC, count NUMERIC);");
+  db.run("CREATE TABLE IF NOT EXISTS info (id INTEGER PRIMARY KEY, name TEXT,thegamesdbId TEXT,platform TEXT, description TEXT,releaseDate TEXT,developer TEXT,rating TEXT);");
 });
 
 var utils = require('./utils.js'),
