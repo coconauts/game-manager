@@ -26,60 +26,40 @@
     
     <body>
         
-        <nav class="top-bar">
+      <div id="background">
+	<img id="backgroundImage"/>
+      </div>
+      <div id="main-content" class="row">
+	  <div class='large-6 columns' id="gameDetails">
+	      <p id="gameName" class="border"></p>
+	      <img id="gameImage" class="border"/>
+	      <p id="gameDescription" class="border"></p>
+	      <p id="gameYear" class="border"></p>
+	      <p id="gameRating" class="border"></p>
+	      <p id="gameDeveloper" class="border"></p>
+	      <div id="actions" class="large-12">
+		  <p id="play" class="icon img-play" ></p>
+		  <p id="favorite" class="icon img-favorite"></p>
+		  <p id="todo" class="img-todo icon"></p>
+		  <p id="finish" class="img-finish icon"></p>
+	      </div>
+	      <p id="gameCount"></p>
+	      </div>
+	  <div class='large-6  columns'>
 
-            <ul class="title-area">
-            <!-- Title Area -->
-            <li class="name">
-                    <h1> <a href="/"> Game Manager</a> </h1>
-            </li>
-            <li class="toggle-topbar menu-menuIcon"><a href="#"><span>menu</span></a></li>
-            </ul>
-
-            <section class="top-bar-section">
-            
-            <ul class="left">
-            <li class="divider"></li>
-                <li> <a href="/settings.html"> Settings</a> </li>
-            </ul>
-            <!-- Right Nav Section -->
-            <ul class="right login">
-            </ul>
-            </section>
-        </nav>
-
-	<div id="background">
-	  <img id="backgroundImage"/>
-	</div>
-        <div class="row">
-        <div class='large-6 columns' id="gameDetails">
-        <p id="gameName" class="border"></p>
-        <img id="gameImage" class="border"/>
-        <p id="gameDescription" class="border"></p>
-        <p id="gameYear" class="border"></p>
-        <p id="gameRating" class="border"></p>
-        <p id="gameDeveloper" class="border"></p>
-        <div id="actions" class="large-12">
-            <p id="play" class="icon img-play" ></p>
-            <p id="favorite" class="icon img-favorite"></p>
-            <p id="todo" class="img-todo icon"></p>
-            <p id="finish" class="img-finish icon"></p>
-        </div>
-        <p id="gameCount"></p>
-    </div>
-    <div class='large-6  columns'>
-        <div id='selector'  >
-        </div>
-        <div class='searchBar'  >
-            <input class='left' placeholder="Game name"  type='text' id='searchInput'/>
-            <button class="secondary icon img-search"  />
-            <button class="secondary icon img-favorite"  />
-            <button class="secondary icon img-todo"  />
-            <button class="secondary icon img-finish"  />
-        </div>
-        <div id="listFiles" class=" border"></div>
-        <p id="fileCount"></p>
-    </div>
+	      <div id='selector'  >
+		<a href='settings.html'><img class='icon icon-plus'/></a>
+	      </div>
+	      <div class='searchBar'  >
+		  <input class='left' placeholder="Game name"  type='text' id='searchInput'/>
+		  <button class="secondary icon img-search"  />
+		  <button class="secondary icon img-favorite"  />
+		  <button class="secondary icon img-todo"  />
+		  <button class="secondary icon img-finish"  />
+	      </div>
+	      <div id="listFiles" class=" border"></div>
+	      <p id="fileCount"></p>
+	  </div>
 
     </div>
 

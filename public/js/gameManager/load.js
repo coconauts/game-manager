@@ -17,4 +17,6 @@
     $(".img-favorite").click(function(){tagSearch(currentPlatform,"favorite")});
     $(".img-todo").click(function(){tagSearch(currentPlatform,"todo")});
     $(".img-finish").click(function(){tagSearch(currentPlatform,"finish")});
+    
+    $("#background").css("height",$(window).height());
 });

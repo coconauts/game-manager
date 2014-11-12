@@ -20,7 +20,6 @@ p {
   position:absolute;
   width:100%;
   height:100%;
-  top:45px;
 }
 #backgroundImage{
     width:auto;
@@ -33,6 +32,9 @@ p {
 /* Game details
 */
 
+#main-content {
+  padding-top:50px;
+}
 .border {
     border:5px solid white;
     border-radius:10px;
@@ -208,6 +210,11 @@ table tr  {  background-color:inherit !important; }
 .platform-win {     background-image:url('../images/platforms/win-icon.png');}
 .platform-md {     background-image:url('../images/platforms/md-icon.png');}
 .platform-scummvm {     background-image:url('../images/platforms/scummvm-icon.png');}
+
+.icon-plus {   background-image:url('images/plus.png');} 
+.icon-settings {   background-image:url('images/settings.png');} 
+.icon-games { background-image:url('images/games.png');} 
+.icon-back { background-image:url('images/back.png');} 
 
 /*OCAROUSEL CHANGES */
 .ocarousel_window_slides img { width:475px; }

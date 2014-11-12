@@ -217,6 +217,6 @@ function loadSelector(){
                $(".icon").addClass("secondary").removeClass("selected");
                $(this).addClass("selected").removeClass("secondary");
             });
-            $("#selector").append(button);
+            $("#selector").prepend(button);
      }
 }
