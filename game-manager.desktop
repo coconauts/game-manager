@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Game Manager
+GenericName=Game Manager
+Comment=Game manager in NodeJS
+Exec=node app.js >> node.log && firefox localhost:8888
+Icon=/usr/share/icons/game-manager.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
