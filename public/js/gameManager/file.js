@@ -191,9 +191,14 @@ function runGame(path,name,ext){
     $.ajax({
         url: "run?c="+exec+"&g="+name+"."+ext+"&p="+currentPlatform.platform,
         dataType: "json",
-        success: function (json) {   
-            var count = $("#gameCount").html();
-            $("#gameCount").html(count-0+1).show();
+        success: function (json) {
+            if (json.error){
+              console.error(json.stderr); //It may be empty as we are redirecting the error output
+              alert("Unable to run command "+ exec+ ", See logs for more details");
+            } else {
+              var count = $("#gameCount").html();
+              $("#gameCount").html(count-0+1).show();
+            }
         }
     });
 }

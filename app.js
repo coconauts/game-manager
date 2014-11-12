@@ -4,7 +4,6 @@ var express = require("express"),
     xml2js = require('xml2js'), //https://github.com/Leonidas-from-XIV/node-xml2js
     fs = require('fs'),
     sqlite3 = require("sqlite3").verbose(),
-    sys = require('sys'),
     exec = require('child_process').exec,
     app = express(),
     config = require('./config.json'),
@@ -305,14 +304,18 @@ app.get('/run',  function(req,res){
         else db.run("UPDATE stats SET count = ? where platform = ? and name = ?",[row.count-0+1,platform,name]);
      });
     
-    command = command +" >> logs/run.log 2>&1";
+    command = command +" >> run.log 2>&1";
 
     console.log("Running "+command);
-    function puts(error, stdout, stderr) { sys.puts(stdout) }
-    exec(command, puts);
-    //TODO Output error in json
     
-    res.json({status: "success"});
+    exec(command, function puts(error, stdout, stderr) { 
+      if (error) console.error(error); 
+          
+      res.json({error: error,
+                stdout: stdout,
+                stderr: stderr});
+    });  
+    
 });
 
 
