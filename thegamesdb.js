@@ -25,14 +25,15 @@ module.exports = {
         });
     },
     
-    downloadCover: function (name,platform,file,folder,fs,res){
+    downloadCover: function (name,platform,callback){
+      console.log("Downloading cover from thegamesdb " +name);
         var gameDbPlatform = platformToThegamesdb(platform),
             startTime = Date.now();
             
         searchGame (name,gameDbPlatform, function(result){
             if (result.status == "error"){
-                console.log("Unable to download image: "+result.msg);
-                res.json(result);
+                var msg = "Unable to download image: "+result.msg;
+                callback(msg);
             } else {
 
                 var base = result.result.baseImgUrl,
@@ -47,39 +48,14 @@ module.exports = {
                     else if (images.boxart) image = images.boxart[0]["_"]; //1 should be the front side
                     else image = images.clearlogo[0]["_"];
                     
-                    var url = base+image,
-                        fileName = folder+file+".png",
-                        f = fs.createWriteStream(fileName),
-                        imgContent;
-                        
-                    console.log("Saving image for "+name+" from "+url+ " in "+fileName);
-                    
-                    http.get(url, function(response) {
-                        response.pipe(f);
-                        response.on('data', function() { });
-                        response.on('end',function(){
+                    var url = base+image;
 
-                            res.json({
-                              status: "success",
-                              img: "/image?path="+fileName,
-                              time: (Date.now() - startTime )
-                            });
-                        });
-                    }).on("error", function(e){
-
-                        res.json({
-                           status: "error",
-                           msg: "Downloading the image "+url+" returned an error: "+e,
-                           time: (Date.now() - startTime )
-                        });
-                    });  
-                    
+                    callback(false, url);
+                   
                 } catch (e){
                     var msg = "No images for "+name+" "+JSON.stringify(game);
-                    console.log(msg);
-                    res.json({ status: "error", msg: msg });
+                    callback(msg);
                 }
-                
             }   
         });
     }

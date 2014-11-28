@@ -1,33 +1,21 @@
-var defaultSettings = new Object();
-defaultSettings.platform = "Nintendo Entertainment System (NES)";
-defaultSettings.roms = "/path/to/roms/";
-defaultSettings.covers = "/path/to/covers/";
-defaultSettings.exec = "/path/to/exec \"{path}{name}.{ext}\"";
-
-var platforms ;
-
-loadSettings();
-
-function loadSettings(){
-    $.ajax({
-        url: "settings",
-        dataType: "json",
-        async:false,
-        success: function (json) {
-            platforms = json.platforms;
-        }
+$( document ).ready(function() {
+    
+    for (var i = 0; i< platforms.length;i++) buildPlatformSetting(platforms[i]);
+    
+    $("#addSettings").click(function(){
+      var defaultSettings = {
+        platform: "Nintendo Entertainment System (NES)",
+        roms: "/path/to/roms/",
+        covers: "/path/to/covers/",
+        exec: "/path/to/exec \"{path}{name}.{ext}\""
+      };
+      buildPlatformSetting(defaultSettings);
     });
-}
-
-function buildSettings(){
-     for (var i = 0; i< platforms.length;i++){
-         buildPlatformSetting(platforms[i]);
-     }
-     //buildPlatformSetting(defaultSettings);
-}
+    $("#saveSettings").click(function(){saveSettings();});
+});
+        
 function platformSelect(platformSelected){
-
-                       
+        
     var select = "<select class='selectSettings' name='platform'>";
     for (i in availablePlatforms) {
         var p = availablePlatforms[i];
@@ -43,9 +31,6 @@ function buildPlatformSetting(s){
     var row = 
     "<tr>"+
         "<td>" +platformSelect(s.platform)+ "</td>"+
-        /*"<td><input name='roms' value='"+s.roms+"'/></td>"+
-        "<td><input name='covers' value='"+s.covers+"'/></td>"+
-        "<td><input name='exec' value='"+s.exec+"'/></td>"+*/
         "<td>"+
             "<label class='labelSettings'>Roms</label><input class='inputSettings' name='roms' value='"+s.roms+"'/><br/>"+
             "<label class='labelSettings'>Snaps</label><input class='inputSettings' name='covers' value='"+s.covers+"'/><br/>"+
@@ -78,11 +63,11 @@ function saveSettings(){
     var settings = new Object();
     settings.platforms = ps; 
     
-     console.log(settings);
+    console.log(settings);
     console.log(JSON.stringify(settings));
     
     $.ajax({
-        url: "/settings/save",
+        url: "/platforms/save",
         type: "POST",
         contentType: 'application/json',
         data:   JSON.stringify(settings)

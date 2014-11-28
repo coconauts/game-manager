@@ -179,14 +179,6 @@ table tr  {  background-color:inherit !important; }
     display:inline-block;
 }
 
-/*Actions*/
-.img-play { background-image:url('../images/run-icon.png');}
-.img-todo { background-image:url('../images/todo-icon.png');}
-.img-finish { background-image:url('../images/finish-icon.png');}
-/*Others*/
-.img-search { background-image:url('../images/search.png');}
-.img-favorite {	background-image:url('../images/heart.png');}
-
 .img-disabled {    
     opacity: 0.4;
     filter: alpha(opacity=40); 
@@ -196,42 +188,33 @@ table tr  {  background-color:inherit !important; }
 
 }
 
-.platform-n64 {     background-image:url('../images/platforms/n64-icon.png');}
-.platform-nes {     background-image:url('../images/platforms/nes-icon.png');}
-.platform-snes {     background-image:url('../images/platforms/snes-icon.png');}
-.platform-gb {     background-image:url('../images/platforms/gb-icon.png');}
-.platform-gbc {     background-image:url('../images/platforms/gbc-icon.png');}
-.platform-gba {     background-image:url('../images/platforms/gba-icon.png');}
-.platform-psx {     background-image:url('../images/platforms/psx-icon.png');}
-.platform-gc {     background-image:url('../images/platforms/gc-icon.png');}
-.platform-arcade {     background-image:url('../images/platforms/arcade-icon.png');}
-.platform-dos {     background-image:url('../images/platforms/dos-icon.png');}
-.platform-atari2600 {     background-image:url('../images/platforms/atari2600-icon.png');}
-.platform-win {     background-image:url('../images/platforms/win-icon.png');}
-.platform-md {     background-image:url('../images/platforms/md-icon.png');}
-.platform-scummvm {     background-image:url('../images/platforms/scummvm-icon.png');}
+.platform-n64 {     background-image:url('platforms/n64-icon.png');}
+.platform-nes {     background-image:url('platforms/nes-icon.png');}
+.platform-snes {     background-image:url('platforms/snes-icon.png');}
+.platform-gb {     background-image:url('platforms/gb-icon.png');}
+.platform-gbc {     background-image:url('platforms/gbc-icon.png');}
+.platform-gba {     background-image:url('platforms/gba-icon.png');}
+.platform-psx {     background-image:url('platforms/psx-icon.png');}
+.platform-gc {     background-image:url('platforms/gc-icon.png');}
+.platform-arcade {     background-image:url('platforms/arcade-icon.png');}
+.platform-dos {     background-image:url('platforms/dos-icon.png');}
+.platform-atari2600 {     background-image:url('platforms/atari2600-icon.png');}
+.platform-win {     background-image:url('platforms/win-icon.png');}
+.platform-md {     background-image:url('platforms/md-icon.png');}
+.platform-scummvm {     background-image:url('platforms/scummvm-icon.png');}
+.platform-ps2 {     background-image:url('platforms/ps2.png');}
 
 .icon-plus {   background-image:url('images/plus.png');} 
 .icon-settings {   background-image:url('images/settings.png');} 
 .icon-games { background-image:url('images/games.png');} 
 .icon-back { background-image:url('images/back.png');} 
-
-/*OCAROUSEL CHANGES */
-.ocarousel_window_slides img { width:475px; }
-.carousel_data_div {
-    width:50px;
-    height:50px;
-    border:1px solid;
-    border-radius:30px;
-    padding-top:5px;
-    text-align:center;
-    font-size:x-large;
-    top:100px;
-    position:absolute;
-    background-color: rgba(255,255,255,0.5);
-}
-.carousel_data_right { left:420px; }
-.carousel_data_div a { color:black; }
+/*Actions*/
+.img-play { background-image:url('images/run-icon.png');}
+.img-todo { background-image:url('images/todo-icon.png');}
+.img-finish { background-image:url('images/finish-icon.png');}
+/*Others*/
+.img-search { background-image:url('images/search.png');}
+.img-favorite { background-image:url('images/heart.png');}
 
 /*FOUNDATION FIXES*/
 .left {  height:0px; }

@@ -3,25 +3,19 @@ var express = require("express"),
     http = require('http'),
     xml2js = require('xml2js'), //https://github.com/Leonidas-from-XIV/node-xml2js
     fs = require('fs'),
-    sqlite3 = require("sqlite3").verbose(),
     exec = require('child_process').exec,
     app = express(),
-    config = require('./config.json'),
-    database = config.db,
-    db = new sqlite3.Database(database);
+    config = require('./config.json');
         
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser());
 
-db.serialize(function() {
-  db.run("CREATE TABLE IF NOT EXISTS platform (id INTEGER PRIMARY KEY, platform TEXT, roms TEXT, covers TEXT, info TEXT, exec TEXT);");
-  db.run("CREATE TABLE IF NOT EXISTS stats (id INTEGER PRIMARY KEY,platform TEXT,name TEXT,favorite NUMERIC, todo NUMERIC, finish NUMERIC, count NUMERIC);");
-  db.run("CREATE TABLE IF NOT EXISTS info (id INTEGER PRIMARY KEY, name TEXT,thegamesdbId TEXT,platform TEXT, description TEXT,releaseDate TEXT,developer TEXT,rating TEXT);");
-});
-
-var utils = require('./utils.js'),
-    thegamesdb = require('./thegamesdb.js');
-
+//custom js
+var db = require('./db.js');
+    utils = require('./utils.js'),
+    thegamesdb = require('./thegamesdb.js'),
+    google = require('./google.js');
+    
 app.get('/', function(req, res){
   fs.readFile('./index.html',function (err, data){
         res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
@@ -88,13 +82,8 @@ function ls(platform, roms, covers, search){
     if(!exists) console.log("Folder "+roms+" doesn't exist in this system");
     else f = fs.readdirSync(roms).sort(); 
 
-    //console.log("search "+search);
     var files = processGames(f,platform,roms,covers,search );
    
-    /*console.log( f.length - ( files.files.length + files.filtered) + " missing games");
-    console.log( files.files.length + " total games");
-    console.log( files.filtered + " filtered games");*/
-
     return {
       folder: roms,
       files: files.files,
@@ -104,20 +93,10 @@ function ls(platform, roms, covers, search){
     };
 }
 
-app.get("/settings", function(req,res){
+app.get("/platforms", function(req,res){
     var startTime = Date.now();
 
-    db.all("SELECT * FROM platform", function(err, rows) {
-      /*  var p = [] ; 
-        for (var i=0; i< rows.length; i++){
-            var row = rows[i];
-            p[i] = {};
-            p[i].platform = row.platform;
-            p[i].roms = row.roms;
-            p[i].covers = row.covers;
-            p[i].info = row.info;
-            p[i].exec = row.exec; 
-        }*/
+    db.all("SELECT * FROM platform order by platform", function(err, rows) {
         
         res.json({
           platforms: rows,
@@ -127,7 +106,7 @@ app.get("/settings", function(req,res){
     });
 });
 
-app.post('/settings/save',  function(req,res){
+app.post('/platforms/save',  function(req,res){
     var platforms = req.body.platforms;
     
     //truncate table
@@ -289,10 +268,28 @@ app.get('/downloadCover',  function(req,res){
     name = utils.sanitize(name);
      
      db.get("select * from platform where platform = ? ",[platform] , function (err, row){
-        var covers = row.covers;
-        thegamesdb.downloadCover(name,platform,file,covers,fs,res);
+        var path = row.covers + "/"+name + ".png";
+        
+        thegamesdb.downloadCover(name,platform,function(error, url){
+            if (error) {
+              downloadFromGoogle();
+            } else utils.saveImage(url, path, function(result){
+                  res.json(result);
+            });
+        });
+        var downloadFromGoogle = function(){
+          google.downloadImage(name, function(error,url){
+            if (error) res.json(error);
+            else utils.saveImage(url, path, function(result){
+                res.json(result);
+            });              
+          });
+        }
      });
+     
+     
 });
+
 app.get('/run',  function(req,res){
     
     var command = req.query.c,
@@ -318,7 +315,6 @@ app.get('/run',  function(req,res){
     
 });
 
-
 app.get('/info',function(req,res){
     var name = req.query.g,
         platform = req.query.p;
@@ -326,12 +322,18 @@ app.get('/info',function(req,res){
     name = utils.sanitize(name);
     
     db.get("select * from info where name LIKE ? AND platform = ?",[name,platform] , function (err, row){    
-        if (row != undefined) {
-            res.json(row);
-        } else {
-            thegamesdb.search(name,platform,res,db);
-        }
+      console.log(row);  
+      if (row) res.json(row);
+      else res.json({error: "Missing info in database"});
     });
+});
+
+app.get('/downloadInfo', function(req,res){
+  var name = req.query.g,
+      platform = req.query.p;
+        
+  name = utils.sanitize(name);
+  thegamesdb.search(name,platform,res,db);
 });
 
 var port = config.port;

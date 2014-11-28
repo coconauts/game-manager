@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Game Manager</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="icon.png" />
         
         <script languaje='javascript' src="js/jquery/jquery-1.9.1.min.js"></script>
             
@@ -15,53 +15,52 @@
 
         <link rel='stylesheet' href='css/foundation/normalize.css'>
         <link rel='stylesheet' href='css/foundation/foundation.min.css'>
-                    
-        <script languaje='javascript' src="js/gameManager/file.js"></script> 
-        <script languaje='javascript' src="js/gameManager/keyboard.js"></script> 
+                                        
         <script languaje='javascript' src="js/gameManager/utils.js"></script> 
-        <script languaje='javascript' src="js/gameManager/settings.js"></script>
-        <script languaje='javascript'  src="js/gameManager/load.js"></script>
+        <script languaje='javascript' src="js/gameManager/platforms.js"></script>
+        <script languaje='javascript' src="js/gameManager/game-manager.js"></script> 
+        <script languaje='javascript' src="js/gameManager/keyboard.js"></script> 
 
     </head>
     
     <body>
         
       <div id="background">
-	<img id="backgroundImage"/>
+        <img id="backgroundImage"/>
       </div>
       <div id="main-content" class="row">
-	  <div class='large-6 columns' id="gameDetails">
-	      <p id="gameName" class="border"></p>
-	      <img id="gameImage" class="border"/>
-	      <p id="gameDescription" class="border"></p>
-	      <p id="gameYear" class="border"></p>
-	      <p id="gameRating" class="border"></p>
-	      <p id="gameDeveloper" class="border"></p>
-	      <div id="actions" class="large-12">
-		  <p id="play" class="icon img-play" ></p>
-		  <p id="favorite" class="icon img-favorite"></p>
-		  <p id="todo" class="img-todo icon"></p>
-		  <p id="finish" class="img-finish icon"></p>
-	      </div>
-	      <p id="gameCount"></p>
-	      </div>
-	  <div class='large-6  columns'>
+        <div class='large-6 columns' id="gameDetails">
+            <p id="gameName" class="border"></p>
+            <img id="gameImage" class="border"/>
+            <p id="gameDescription" class="border"></p>
+            <p id="gameYear" class="border"></p>
+            <p id="gameRating" class="border"></p>
+            <p id="gameDeveloper" class="border"></p>
+            <div id="actions" class="large-12">
+              <p id="play" class="icon img-play" ></p>
+              <p id="favorite" class="icon img-favorite"></p>
+              <p id="todo" class="img-todo icon"></p>
+              <p id="finish" class="img-finish icon"></p>
+            </div>
+            <p id="gameCount"></p>
+            </div>
+        <div class='large-6  columns'>
 
-	      <div id='selector'  >
-		<a href='settings.html'><img class='icon icon-plus'/></a>
-	      </div>
-	      <div class='searchBar'  >
-		  <input class='left' placeholder="Game name"  type='text' id='searchInput'/>
-		  <button class="secondary icon img-search"  />
-		  <button class="secondary icon img-favorite"  />
-		  <button class="secondary icon img-todo"  />
-		  <button class="secondary icon img-finish"  />
-	      </div>
-	      <div id="listFiles" class=" border"></div>
-	      <p id="fileCount"></p>
-	  </div>
+            <div id='selector'  >
+              <a href='settings.html'><img class='icon icon-plus'/></a>
+            </div>
+            <div class='searchBar'  >
+              <input class='left' placeholder="Game name"  type='text' id='searchInput'/>
+              <button class="secondary icon img-search"  />
+              <button class="secondary icon img-favorite"  />
+              <button class="secondary icon img-todo"  />
+              <button class="secondary icon img-finish"  />
+            </div>
+            <div id="listFiles" class=" border"></div>
+            <p id="fileCount"></p>
+        </div>
 
-    </div>
+      </div>
 
         <footer class="row">
             <div class="large-12 columns">
