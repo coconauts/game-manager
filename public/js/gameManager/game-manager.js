@@ -108,8 +108,8 @@ function buildFile(path,file){
         
         clearTimeout(hoverTime);
         hoverTime = setTimeout(function(){
-          if (!file.image) downloadInfo(file);
-          if (!$("#gameDescription").html()) downloadCover(file);    
+          if (!file.image) downloadCover(file);
+          if (!$("#gameDescription").html()) downloadInfo(file);    
         }, hoverMaxTime);
                 
     });
@@ -121,9 +121,11 @@ var clearInfo = function(file){
   $("#gameYear").hide();
   $("#gameRating").hide();
   $("#gameDeveloper").hide();
-  $("#gameImage").hide();
+  //$("#gameImage").hide();
   $("#backgroundImage").hide();
      
+  $("#gameImage").attr("src","css/images/loading.gif");
+  
   $("#actions").show().find("p").unbind();
   
   //default values
@@ -240,18 +242,15 @@ function runGame(path,name,ext){
 function loadSelector(){
      for (var i=0 ; i < platforms.length; i++){
           var p = platforms[i].platform;
-          
-          var button = $("<button/>");
-          var className = "platform-"+platformToShort(p);
-          $(button).addClass("icon").addClass(className).addClass("secondary");
-          $(button).attr("index",i);
-          if (p == currentPlatform.platform) $(button).removeClass("secondary").addClass("selected");
-          $(button).click(function (){
+	  var selected = (p == currentPlatform.platform)?'selected':'secondary';
+          var buttonTemplate = "<button index='"+i+"'class='platform-"+platformToShort(p)+" "+selected+"'/>";
+	  var $button = $(buttonTemplate);
+          $button.click(function (){
               var i = $(this).attr("index");
               platform(platforms[i]);
-              $(".icon").addClass("secondary").removeClass("selected");
+              $(".platform").addClass("secondary").removeClass("selected");
               $(this).addClass("selected").removeClass("secondary");
           });
-          $("#selector").prepend(button);
+          $("#selector").prepend($button);
      }
 }

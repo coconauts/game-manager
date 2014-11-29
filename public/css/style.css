@@ -169,14 +169,19 @@ table tr  {  background-color:inherit !important; }
 }
 #actions p {  margin-right:50px; }
 
-.icon {
-    background-size: 48px 48px;
+[class*="icon-"] {
+    /*background-size: 48px 48px;
     background-position:center;
     background-repeat: no-repeat;
     width:50px;
     height:50px;
     margin:1px;
-    display:inline-block;
+    display:inline-block;*/
+      width:48px;
+  height:50px;
+  background-repeat: no-repeat;
+    
+  background-image:url('images/icons.png');
 }
 
 .img-disabled {    
@@ -188,33 +193,43 @@ table tr  {  background-color:inherit !important; }
 
 }
 
-.platform-n64 {     background-image:url('platforms/n64-icon.png');}
-.platform-nes {     background-image:url('platforms/nes-icon.png');}
-.platform-snes {     background-image:url('platforms/snes-icon.png');}
-.platform-gb {     background-image:url('platforms/gb-icon.png');}
-.platform-gbc {     background-image:url('platforms/gbc-icon.png');}
-.platform-gba {     background-image:url('platforms/gba-icon.png');}
-.platform-psx {     background-image:url('platforms/psx-icon.png');}
-.platform-gc {     background-image:url('platforms/gc-icon.png');}
-.platform-arcade {     background-image:url('platforms/arcade-icon.png');}
-.platform-dos {     background-image:url('platforms/dos-icon.png');}
-.platform-atari2600 {     background-image:url('platforms/atari2600-icon.png');}
-.platform-win {     background-image:url('platforms/win-icon.png');}
-.platform-md {     background-image:url('platforms/md-icon.png');}
-.platform-scummvm {     background-image:url('platforms/scummvm-icon.png');}
-.platform-ps2 {     background-image:url('platforms/ps2.png');}
+[class*="platform-"]  {
+  width:48px;
+  height:50px;
+    background-image:url('images/platforms.png') ;
+} 
 
-.icon-plus {   background-image:url('images/plus.png');} 
-.icon-settings {   background-image:url('images/settings.png');} 
-.icon-games { background-image:url('images/games.png');} 
-.icon-back { background-image:url('images/back.png');} 
+/* 1 ,2, 3  ,4  ,5  ,6  ,7
+ * 48,96,144,192,240,288,336 */
+
+.platform-n64 {     background-position:-96px -48px}
+.platform-nes {     background-position:0px -48px}
+.platform-snes {    background-position:-48px -48px}
+.platform-gb {      background-position:0px -96px}
+.platform-gbc {     background-position:-48px -96px}
+.platform-gba {     background-position:-96px -96px}
+.platform-nds {     background-position:-144px -96px}
+.platform-psx {     background-position:-48px -144px}
+.platform-gc {      background-position:-144px -48px}
+.platform-arcade {  background-position:-48px 0px}
+.platform-dos {     background-position:-96px 0px}
+.platform-atari2600{background-position:0px 0px}
+.platform-win {     background-position:-144px 0px}
+.platform-md {      background-position:0px -144px}
+.platform-scummvm { background-position:-192px 0px}
+.platform-ps2 {     background-position:-96px -144px}
+
+.icon-plus {     background-position:-48px 0px} 
+.icon-settings { background-position:-96px 0px} 
+.icon-back {     background-position:0px 0px} 
 /*Actions*/
-.img-play { background-image:url('images/run-icon.png');}
-.img-todo { background-image:url('images/todo-icon.png');}
-.img-finish { background-image:url('images/finish-icon.png');}
+.icon-play {    background-position:0px -96px}
+.icon-todo {    background-position:-48px -96px}
+.icon-finish {  background-position:-96px -96px}
 /*Others*/
-.img-search { background-image:url('images/search.png');}
-.img-favorite { background-image:url('images/heart.png');}
+.icon-search {    background-position:0px -48px}
+.icon-favorite {  background-position:-48px -48px}
+.icon-loading { background-image:url('images/loading.gif') }
 
 /*FOUNDATION FIXES*/
 .left {  height:0px; }

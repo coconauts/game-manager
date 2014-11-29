@@ -35,22 +35,19 @@ module.exports = {
                 var msg = "Unable to download image: "+result.msg;
                 callback(msg);
             } else {
-
-                var base = result.result.baseImgUrl,
-                    game = getExactGame(result.result.Game,name);
-                console.log("base image "+base);
-                
-                try{
-                    var images = game.Images[0],
-                        image = "";
+		 try{
+		    var base = result.result.baseImgUrl,
+			game = getExactGame(result.result.Game,name),
+			images = game.Images[0],
+			image = "";
+			
+		    console.log("base image "+base);
                         
                     if (images.screenshot)  image = images.screenshot[0].original[0]["_"];
                     else if (images.boxart) image = images.boxart[0]["_"]; //1 should be the front side
                     else image = images.clearlogo[0]["_"];
                     
-                    var url = base+image;
-
-                    callback(false, url);
+                    callback(false, base+image);
                    
                 } catch (e){
                     var msg = "No images for "+name+" "+JSON.stringify(game);

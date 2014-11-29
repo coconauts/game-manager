@@ -1,3 +1,6 @@
+var http = require('http'),
+    fs = require('fs');
+
 module.exports = {
    removeExtension: function (file) {
         var extensionIndex = file.lastIndexOf(".") ;
@@ -27,7 +30,7 @@ module.exports = {
           response.on('end',function(){
             callback({
                 error: false,
-                img: "/image?path="+fileName
+                img: "/image?path="+path
             });
         });
       }).on("error", function(e){

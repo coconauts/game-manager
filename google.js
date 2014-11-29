@@ -7,12 +7,12 @@ module.exports = {
      
      //https://ajax.googleapis.com/ajax/services/search/images?safe=off&v=1.0&rsz=8&q=
     var startTime = Date.now(),
-    path = encodeURI("ajax/services/search/images?safe=off&v=1.0&rsz=1&q="+name),
-    uri = 'https://ajax.googleapis.com'+path, //only needed for logs
+    path = encodeURI("/ajax/services/search/images?safe=off&v=1.0&rsz=1&q="+name),
+    uri = 'http://ajax.googleapis.com'+path, //only needed for logs
     data = "",
     options = {
         host: 'ajax.googleapis.com',
-        port: 443,
+        port: 80,
         path: path,
         agent : false
     };
@@ -28,13 +28,12 @@ module.exports = {
             
             try{
                 json =  JSON.parse(data);
-                console.log(json);
-            
-                var url = json.responseData.result[0].url
+               
+                var url = json.responseData.results[0].url
                 callback(false, url);
                 
             } catch (e){
-                var msg = "No images for "+name+" "+JSON.stringify(game);
+                var msg = "Unable to download image from google " + e;
                 
                 console.log(msg);
                 callback(msg);

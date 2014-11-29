@@ -265,20 +265,21 @@ app.get('/downloadCover',  function(req,res){
         platform = req.query.p,
         name = req.query.g;
         
-    name = utils.sanitize(name);
+    sanitizedName = utils.sanitize(name);
      
      db.get("select * from platform where platform = ? ",[platform] , function (err, row){
-        var path = row.covers + "/"+name + ".png";
+        var path = row.covers +name + ".png";
         
-        thegamesdb.downloadCover(name,platform,function(error, url){
+        thegamesdb.downloadCover(sanitizedName,platform,function(error, url){
             if (error) {
+	      console.log("Unable to download cover from thegamesdb " + error);
               downloadFromGoogle();
             } else utils.saveImage(url, path, function(result){
                   res.json(result);
             });
         });
         var downloadFromGoogle = function(){
-          google.downloadImage(name, function(error,url){
+          google.downloadImage(platform + " "+ name, function(error,url){
             if (error) res.json(error);
             else utils.saveImage(url, path, function(result){
                 res.json(result);
@@ -321,8 +322,7 @@ app.get('/info',function(req,res){
         
     name = utils.sanitize(name);
     
-    db.get("select * from info where name LIKE ? AND platform = ?",[name,platform] , function (err, row){    
-      console.log(row);  
+    db.get("select * from info where name LIKE ? AND platform = ?",[name,platform] , function (err, row){     
       if (row) res.json(row);
       else res.json({error: "Missing info in database"});
     });
