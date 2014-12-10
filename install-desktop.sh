@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "#!/bin/bash
-firefox localhost:8888
-node `pwd`/app.js >> `pwd`/game-manager.log"  > /usr/bin/game-manager
+sleep 1 && firefox localhost:8888 &
+cd `pwd` && node app.js >> game-manager.log 2>&1"  > /usr/bin/game-manager
 
 chmod +x /usr/bin/game-manager
 

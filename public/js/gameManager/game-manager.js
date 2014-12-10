@@ -7,7 +7,8 @@ var hoverMaxTime = 2500;
  $( document ).ready(function() {
 
     if (platforms.length > 0 ) {
-        platform(platforms[0]);
+	//TODO Remove this if we have a main screen
+        platform(platforms[1]);
         loadSelector();
     }
     else alert("No platforms available");
@@ -146,8 +147,8 @@ var loadTags = function(filename){
               value = json[tag];
               if (value) $("#"+tag).removeClass("img-disabled").unbind().click(function(){removeTag(filename,this.id);});
           }  
-          if (!json.count)$("#gameCount").html("").hide();
-          else $("#gameCount").html(json.count).show();
+          if (!json.count)$("#play").html("").show();
+          else $("#play").html(json.count).show();
       }
   });
 }
@@ -232,8 +233,9 @@ function runGame(path,name,ext){
               console.error(json.stderr); //It may be empty as we are redirecting the error output
               alert("Unable to run command "+ exec+ ", See logs for more details");
             } else {
-              var count = $("#gameCount").html();
-              $("#gameCount").html(count-0+1).show();
+              var count = $("#play").html();
+	      if (!count) count = 0;
+              $("#play").html(count-0+1).show();
             }
         }
     });
@@ -251,6 +253,6 @@ function loadSelector(){
               $(".platform").addClass("secondary").removeClass("selected");
               $(this).addClass("selected").removeClass("secondary");
           });
-          $("#selector").prepend($button);
+          $("#selector").append($button);
      }
 }

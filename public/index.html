@@ -37,18 +37,18 @@
             <p id="gameRating" class="border"></p>
             <p id="gameDeveloper" class="border"></p>
             <div id="actions" class="large-12">
-              <button id="play" class="icon-play" ></button>
-              <button id="favorite" class="icon-favorite"></button>
-              <button id="todo" class="icon-todo"></button>
-              <button id="finish" class="icon-finish"></button>
+              <p id="play" class="icon-play" >0</p>
+              <p id="favorite" class="icon-favorite"> </p>
+              <p id="todo" class="icon-todo"> </p>
+              <p id="finish" class="icon-finish"> </p>
             </div>
-            <p id="gameCount"></p>
             </div>
         <div class='large-6  columns'>
 
-            <div id='selector'  >
-              <a href='settings.html'><img class='icon icon-plus'/></a>
+            <div id='selector'> 
+            <!-- Here goes the platforms -->
             </div>
+            <a href='settings.html' id='add-settings' class='icon icon-plus'></a>
             <div class='searchBar'  >
               <input class='left' placeholder="Game name"  type='text' id='searchInput'/>
               <button class="secondary icon-search"  />
@@ -56,7 +56,9 @@
               <button class="secondary icon-todo"  />
               <button class="secondary icon-finish"  />
             </div>
-            <div id="listFiles" class=" border"></div>
+            <div id="listFiles" class=" border">
+            <!-- Here goes the list of games -->
+            </div>
             <p id="fileCount"></p>
         </div>
 

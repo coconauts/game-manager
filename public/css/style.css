@@ -116,7 +116,17 @@ table tr  {  background-color:inherit !important; }
     padding:0px;
     margin:10px  0 10px 0;
 }
-#selector{}
+#selector{
+  display:inline;
+  
+}
+
+#add-settings {
+padding-left:48px;
+padding-top:26px;
+position:absolute;
+}
+
 #searchInput{
     width:260px;
     height:100%;
@@ -167,7 +177,11 @@ table tr  {  background-color:inherit !important; }
     top:500px;
     display:none;
 }
-#actions p {  margin-right:50px; }
+#actions p { 
+display:inline-block ;
+  margin-left:50px;
+  padding-top:48px;
+}
 
 [class*="icon-"] {
     /*background-size: 48px 48px;
