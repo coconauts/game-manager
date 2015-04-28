@@ -25,7 +25,7 @@ module.exports = {
         });
     },
     
-    downloadCover: function (name,platform,callback){
+    downloadImage: function (name,platform,callback){
       console.log("Downloading cover from thegamesdb " +name);
         var gameDbPlatform = platformToThegamesdb(platform),
             startTime = Date.now();

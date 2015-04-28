@@ -15,7 +15,7 @@ loadPlatforms();
 
 //http://thegamesdb.net/api/GetPlatformsList.php
 var availablePlatforms=["Arcade","Atari 2600","Dos","NeoGeo","Nintendo 64","Nintendo DS","Nintendo Entertainment System (NES)",
-            "Nintendo Game Boy", "Nintendo Game Boy Advance", "Nintendo Game Boy Color","ScummVM",
+            "Nintendo Game Boy", "Nintendo Game Boy Advance", "Nintendo Game Boy Color","Nintendo GameCube","ScummVM",
             "Sega Game Gear","Sega Genesis","Sega Saturn", "Sony Playstation","Sony Playstation 2",
             "Super Nintendo (SNES)", "Pc"];
         
@@ -32,6 +32,7 @@ function platformToShort(platform){
     case "Nintendo Game Boy": return "gb";
     case "Nintendo Game Boy Advance": return "gba";
     case "Nintendo Game Boy Color": return "gbc";
+    case "Nintendo GameCube": return "gc";
     case "Super Nintendo (SNES)": return "snes";
     case "Sega Game Gear": return "gg";
     case "Sega Genesis": return "md";

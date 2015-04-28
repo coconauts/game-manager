@@ -128,7 +128,7 @@ position:absolute;
 }
 
 #searchInput{
-    width:260px;
+    width:170px;
     height:100%;
     font-size:large;
 }
@@ -191,7 +191,7 @@ display:inline-block ;
     height:50px;
     margin:1px;
     display:inline-block;*/
-      width:48px;
+  width:48px;
   height:50px;
   background-repeat: no-repeat;
     
@@ -244,6 +244,8 @@ display:inline-block ;
 .icon-search {    background-position:0px -48px}
 .icon-favorite {  background-position:-48px -48px}
 .icon-loading { background-image:url('images/loading.gif') }
+.icon-last-played { background-position:-144px -96px}
+.icon-most-played { background-position:-96px -48px}
 
 /*FOUNDATION FIXES*/
 .left {  height:0px; }

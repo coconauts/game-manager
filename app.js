@@ -173,6 +173,17 @@ app.get('/tag/search',  function(req,res){
     });
 });
 
+var getImageUrl = function(path, file){
+   var imagePath = path+utils.removeExtension(file)+".png",
+	existImage = fs.existsSync(imagePath);
+	
+    if (!existImage){
+	imagePath = path+utils.removeExtension(file)+".jpg";
+	existImage = fs.existsSync(imagePath);
+    }
+     if (existImage) return "/image?path="+imagePath; 
+     else undefined;
+}
 function processGames(f,platform,roms, covers,search ){
 
     var nameMap;
@@ -199,14 +210,6 @@ function processGames(f,platform,roms, covers,search ){
             //console.log("Game name " +file+ " is empty");
         } else if ( !search || game.toUpperCase().indexOf(search.toUpperCase()) != -1 ){
                    
-            var imagePath = covers+utils.removeExtension(file)+".png",
-                existImage = fs.existsSync(imagePath);
-                
-            if (!existImage){
-                imagePath = covers+utils.removeExtension(file)+".jpg";
-                existImage = fs.existsSync(imagePath);
-            }
-            
             files[n] = {
               file: fileNoExtension,
               name: game,
@@ -214,7 +217,8 @@ function processGames(f,platform,roms, covers,search ){
             };
 
             //files[j].description = "";
-            if (existImage) files[n].image = "/image?path="+(imagePath); 
+	    var imagePath = getImageUrl(covers,file);
+            if (imagePath) files[n].image = imagePath; 
             
             try{
                 files[n].type = fs.lstatSync(roms+"/"+file).isDirectory()?"folder":"file";
@@ -270,7 +274,7 @@ app.get('/downloadCover',  function(req,res){
      db.get("select * from platform where platform = ? ",[platform] , function (err, row){
         var path = row.covers +name + ".png";
         
-        thegamesdb.downloadCover(sanitizedName,platform,function(error, url){
+        thegamesdb.downloadImage(sanitizedName,platform,function(error, url){
             if (error) {
 	      console.log("Unable to download cover from thegamesdb " + error);
               downloadFromGoogle();
@@ -279,7 +283,7 @@ app.get('/downloadCover',  function(req,res){
             });
         });
         var downloadFromGoogle = function(){
-          google.downloadImage(platform + " "+ name, function(error,url){
+          google.downloadImage(platform + " "+ name + " gameplay", function(error,url){
             if (error) res.json(error);
             else utils.saveImage(url, path, function(result){
                 res.json(result);
@@ -295,24 +299,71 @@ app.get('/run',  function(req,res){
     
     var command = req.query.c,
         name = req.query.g,
-        platform = req.query.p;
+        platform = req.query.p,
+	now = new Date().getTime();
     
     db.get("select * from stats where name LIKE ? AND platform = ?",[name,platform] , function (err, row){   
-        if (!row) db.run("INSERT OR IGNORE INTO stats (platform,name,count) VALUES (?,?,1)",  [platform,name]);  
-        else db.run("UPDATE stats SET count = ? where platform = ? and name = ?",[row.count-0+1,platform,name]);
+        if (!row) db.run("INSERT OR IGNORE INTO stats (platform,name,count, last_play) VALUES (?,?,1, ?)",  [platform,name, now]);  
+        else db.run("UPDATE stats SET count = ? where platform = ? and name = ? and last_play = ?",[row.count-0+1,platform,name, now]);
      });
     
     command = command +" >> run.log 2>&1";
 
     console.log("Running "+command);
     
-    exec(command, function puts(error, stdout, stderr) { 
+    var com = exec(command, function(error, stdout, stderr) { 
       if (error) console.error(error); 
-          
-      res.json({error: error,
-                stdout: stdout,
-                stderr: stderr});
-    });  
+    });
+    
+    res.json({pid: com.pid});
+    
+});
+
+var stats2games =function(stats, imageFolder){
+
+ var games = [];
+ for (var i=0;i<stats.length; i++){
+   var stat  = stats[i];
+       name = utils.removeExtension(stat.name),
+       imagePath = getImageUrl(imageFolder, stat.name),
+       game = {
+	  file: name,
+	  name: name,
+	  ext: utils.extension(stat.name),
+	  image: imagePath,
+	  type: 'file'
+	};
+   games.push(game);
+ }
+ return games;
+  
+}
+var stats = function(sql, platform, count, res){
+  
+  db.all(sql,[platform,count] , function (err, stats){   
+	if (err) console.error(err);   
+	 db.get("select * from platform where platform = ? ",[platform] , function (err, plat){
+	    var games = stats2games(stats, plat.covers);
+	    res.json({folder: plat.roms, files:games, count: games.length});
+	 });
+     });    
+}
+app.get('/stats/most-played',  function(req,res){
+    
+    var count = utils.getOrElse(req.query.c,10),
+	platform = req.query.p,
+	sql = "select * from stats WHERE platform = ? AND count > 0 ORDER BY count DESC LIMIT ?";
+	
+    stats(sql, platform, count, res);   
+});
+
+app.get('/stats/last-played',  function(req,res){
+    
+    var count = utils.getOrElse(req.query.c,10),
+	platform = req.query.p,
+	sql = "select * from stats WHERE platform = ? AND last_play is not null ORDER BY last_play DESC LIMIT ?";
+	
+     stats(sql,  platform,count, res);
     
 });
 

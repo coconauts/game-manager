@@ -20,14 +20,25 @@ var hoverMaxTime = 2500;
             platform(currentPlatform,$("#searchInput").val());
         }
     });
-    $(".img-search").click(function(){platform(currentPlatform,$("#searchInput").val())});
-    $(".img-favorite").click(function(){tagSearch(currentPlatform,"favorite")});
-    $(".img-todo").click(function(){tagSearch(currentPlatform,"todo")});
-    $(".img-finish").click(function(){tagSearch(currentPlatform,"finish")});
-    
+    $(".icon-search").click(function(){platform(currentPlatform,$("#searchInput").val())});
+    $(".icon-favorite").click(function(){tagSearch(currentPlatform,"favorite")});
+    $(".icon-todo").click(function(){tagSearch(currentPlatform,"todo")});
+    $(".icon-finish").click(function(){tagSearch(currentPlatform,"finish")});
+    $(".icon-last-played").click(function(){stats(currentPlatform,"last-played")});
+    $(".icon-most-played").click(function(){stats(currentPlatform,"most-played")});
+
     $("#background").css("height",$(window).height());
 });
  
+var stats = function(platform, stats){
+  $.ajax({
+        url: "stats/"+stats+"?p="+platform.platform,
+        success: function (json) {
+            lsJson(json);
+            $("#fileCount").html(json.count+" of "+json.total);
+        }
+    });
+}
 function platform(platform, search)
 {   
     if (search != undefined) search = "&s="+search; else search = "";
@@ -54,13 +65,14 @@ function tagSearch(platform,tag)
     });
 } 
 
+
 function lsJson(response){
     var folder = response.folder;
 
     $("#listFiles").empty();
     for(var i=0;i<response.files.length;i++){
         var file = response.files[i];
-        if (file.type == "file"){ //filter out folders
+        if (file.id > 0 || file.type == "file"){ //filter out folders
 
             var fileResponse = buildFile(folder, file);
             $("#listFiles").append(fileResponse);

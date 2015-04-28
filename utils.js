@@ -2,6 +2,10 @@ var http = require('http'),
     fs = require('fs');
 
 module.exports = {
+    getOrElse: function(value, def){
+	if (value !== undefined) return value;
+	else return def;
+    },
    removeExtension: function (file) {
         var extensionIndex = file.lastIndexOf(".") ;
         return file.substr(0,extensionIndex);
