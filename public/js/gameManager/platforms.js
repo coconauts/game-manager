@@ -15,10 +15,10 @@ loadPlatforms();
 
 //http://thegamesdb.net/api/GetPlatformsList.php
 var availablePlatforms=["Arcade","Atari 2600","Dos","NeoGeo","Nintendo 64","Nintendo DS","Nintendo Entertainment System (NES)",
-            "Nintendo Game Boy", "Nintendo Game Boy Advance", "Nintendo Game Boy Color","Nintendo GameCube","ScummVM",
+            "Nintendo Game Boy", "Nintendo Game Boy Advance", "Nintendo Game Boy Color","Nintendo GameCube", "Nintendo Wii" ,"ScummVM",
             "Sega Game Gear","Sega Genesis","Sega Saturn", "Sony Playstation","Sony Playstation 2",
             "Super Nintendo (SNES)", "Pc"];
-        
+
 //TODO Update this metod to platformToSlug
 function platformToShort(platform){
    switch(platform)
@@ -42,6 +42,7 @@ function platformToShort(platform){
     case "Pc": return "win";
     case "ScummVM": return "scummvm";
     case "Sony Playstation 2": return "ps2";
+    case "Nintendo Wii" return "wii";
     default: return "Unrecognised platform: "+platform;
     }
 }
