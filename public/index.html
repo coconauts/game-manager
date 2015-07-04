@@ -4,37 +4,47 @@
         <meta charset="utf-8"/>
         <title>Game Manager</title>
         <link rel="icon" type="image/x-icon" href="icon.png" />
+
         <script languaje='javascript' src="js/jquery/jquery-1.9.1.min.js"></script>
+
         <script languaje='javascript' src="js/foundation/modernizr.js"></script>
         <script languaje='javascript' src="js/foundation/vendor/zepto.js"></script>
         <script languaje='javascript' src="js/foundation/foundation.min.js"></script>
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel='stylesheet' href='css/foundation/normalize.css'/>
-        <link rel='stylesheet' href='css/foundation/foundation.min.css'/>
+
+        <link rel="stylesheet" href="css/style.css" >
+        <link rel="stylesheet" href="css/platforms.css" >
+
+        <link rel='stylesheet' href='css/foundation/normalize.css'>
+        <link rel='stylesheet' href='css/foundation/foundation.min.css'>
+
         <script languaje='javascript' src="js/gameManager/utils.js"></script>
         <script languaje='javascript' src="js/gameManager/platforms.js"></script>
         <script languaje='javascript' src="js/gameManager/game-manager.js"></script>
         <script languaje='javascript' src="js/gameManager/keyboard.js"></script>
+
     </head>
+
     <body>
-        <div id="background">
-            <img id="backgroundImage"/>
-        </div>
-        <div id="main-content" class="row">
-            <div class='large-6 columns' id="gameDetails">
-                <p id="gameName" class="border"></p>
-                <img id="gameImage" class="border"/>
-                <p id="gameDescription" class="border"></p>
-                <p id="gameYear" class="border"></p>
-                <p id="gameRating" class="border"></p>
-                <p id="gameDeveloper" class="border"></p>
-                <div id="actions" class="large-12">
-                    <p id="play" class="icon-play" >0</p>
-                    <p id="favorite" class="icon-favorite"></p>
-                    <p id="todo" class="icon-todo"></p>
-                    <p id="finish" class="icon-finish"></p>
-                </div>
+
+      <div id="background">
+        <img id="backgroundImage"/>
+      </div>
+      <div id="main-content" class="row">
+        <div class='large-6 columns' id="gameDetails">
+            <p id="gameName" class="border"></p>
+            <img id="gameImage" class="border"/>
+            <p id="gameDescription" class="border"></p>
+            <p id="gameYear" class="border"></p>
+            <p id="gameRating" class="border"></p>
+            <p id="gameDeveloper" class="border"></p>
+            <div id="actions" class="large-12">
+              <p id="play" class="icon-play" >0</p>
+              <p id="favorite" class="icon-favorite"> </p>
+              <p id="todo" class="icon-todo"> </p>
+              <p id="finish" class="icon-finish"> </p>
             </div>
+        </div>
+
             <div class='large-6  columns'>
                 <div class="row">
                     <div id='selector'>
