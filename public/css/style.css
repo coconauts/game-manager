@@ -128,13 +128,12 @@ position:absolute;
 }
 
 #searchInput{
-    width:170px;
+    width:400px;
     height:100%;
     font-size:large;
 }
 #listFiles{
     padding:20px;
-    width: 480px;
     overflow-x:hidden;
     overflow-y:auto;
     height:450px;
@@ -172,6 +171,9 @@ position:absolute;
     font-weight:bold;
 }
 
+.round {
+   border-radius: 25px;
+}
 #actions {
     position:absolute;
     top:500px;

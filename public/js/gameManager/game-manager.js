@@ -35,7 +35,7 @@ var stats = function(platform, stats){
         url: "stats/"+stats+"?p="+platform.platform,
         success: function (json) {
             lsJson(json);
-            $("#fileCount").html(json.count+" of "+json.total);
+            $("#fileCount").html(json.count);
         }
     });
 }
@@ -60,7 +60,7 @@ function tagSearch(platform,tag)
         url: "tag/search?p="+platform.platform+"&t="+tag,
         success: function (json) {
             lsJson(json);
-            $("#fileCount").html(json.count+" of "+json.total);
+            $("#fileCount").html(json.count);
         }
     });
 } 
@@ -257,7 +257,7 @@ function loadSelector(){
      for (var i=0 ; i < platforms.length; i++){
           var p = platforms[i].platform;
 	  var selected = (p == currentPlatform.platform)?'selected':'secondary';
-          var buttonTemplate = "<button index='"+i+"'class='platform-"+platformToShort(p)+" "+selected+"'/>";
+          var buttonTemplate = "<button index='"+i+"'class='round platform-"+platformToShort(p)+" "+selected+"'/>";
 	  var $button = $(buttonTemplate);
           $button.click(function (){
               var i = $(this).attr("index");
