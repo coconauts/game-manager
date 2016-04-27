@@ -21,13 +21,13 @@ function filename(file)
     return file.substr(fileNameIndex+1);
 }
 
-function removeLastChar(str, c) 
-{    
+function removeLastChar(str, c)
+{
     var newstr = str;
     var lastChar= str.charAt(str.length-1);
     if (lastChar == c){
         newstr = str.substring(0,str.length-1);
-    }    
+    }
     return newstr;
 }
 
@@ -36,3 +36,16 @@ function arrayContains(array, tag) {
     return false;
 };
 
+var loadParams = function(url){
+  if (url) url =url.replace('?','');
+  else url = window.location.search.substr(1);
+  var prmarr = url.split("&");
+
+  var params = {};
+
+  for ( var i = 0; i < prmarr.length; i++) {
+    var tmparr = prmarr[i].split("=");
+    params[tmparr[0]] = tmparr[1];
+  }
+  return params;
+}

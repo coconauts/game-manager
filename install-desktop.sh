@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "#!/bin/bash
-sleep 1 && firefox localhost:8888 &
+sleep 1 && xdg-open http://localhost:8888 &
 cd `pwd` && node app.js >> game-manager.log 2>&1"  > /usr/bin/game-manager
 
 chmod +x /usr/bin/game-manager
@@ -19,4 +19,3 @@ Terminal=true
 Type=Application" > /usr/share/applications/game-manager.desktop
 
 echo "game-manager.desktop was created in /usr/share/applications/"
-

@@ -10,6 +10,8 @@ var hoverMaxTime = 2500;
 	//TODO Remove this if we have a main screen
         platform(platforms[1]);
         loadSelector();
+        preload();
+
     }
     else alert("No platforms available");
 
@@ -83,6 +85,17 @@ function lsJson(response){
     $(first).trigger('mouseenter');
 
 }
+
+function preload(){
+
+    var params =loadParams();
+    if (params.platform){ //link
+       console.log("Loading platform from params " + params.platform);
+        $(".platform-"+params.platform).click();
+    }
+
+}
+
 
 function buildFile(path,file){
 
