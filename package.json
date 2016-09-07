@@ -17,13 +17,14 @@
     "url": "https://github.com/coconauts/game-manager/issues"
   },
   "homepage": "https://github.com/coconauts/game-manager",
-  "dependencies" : {
-    "express" : "4.1.1",
-    "sqlite3" : "2.2.3",
-    "body-parser" : "1.0.2",
+  "dependencies": {
+    "body-parser": "1.0.2",
+    "express": "4.1.1",
+    "sqlite3": "2.2.3",
+    "superagent": "^2.2.0",
     "xml2js": "0.4.4"
   },
-  "engine": {  
-    "node": ">=0.10.25"  
-  }  
+  "engine": {
+    "node": ">=0.10.25"
+  }
 }

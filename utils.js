@@ -16,18 +16,19 @@ module.exports = {
     },
     sanitize: function (str) {
         if (str) {
-          str = str.replace(/\(.*\)/g,""); 
-          str = str.replace(/ - /g,": "); 
+          str = str.replace(/\(.*\)/g,"");
+          str = str.replace(/ - /g,": ");
+          str = str.replace(/\[\!\]/g,""); 
           str = str.trim();
         }
         return str;
     },
     saveImage: function(imgUrl, path, callback){
-      
+
       console.log("Saving image from "+imgUrl+ " in "+path);
-      
+
       f = fs.createWriteStream(path),
-      
+
       http.get(imgUrl, function(response) {
           response.pipe(f);
           response.on('data', function() { });
@@ -41,6 +42,6 @@ module.exports = {
           callback({
               error: "Unable to save image from " + imgUrl + " into " + path + ": " + e
           });
-      });  
+      });
     }
 };
