@@ -2,7 +2,7 @@ var currentPlatform ;
 var currentGame;
 var tags = ["favorite","todo","finish"];
 var hoverTime ;
-var hoverMaxTime = 2500;
+var hoverMaxTime = 1000;
 
  $( document ).ready(function() {
 
@@ -129,7 +129,6 @@ function buildFile(path,file){
         $("#play").click(function(){runGame(path,file.file,file.ext);});
 
         loadTags(fullFile);
-
         loadInfo(currentGame);
 
         clearTimeout(hoverTime);
@@ -143,6 +142,7 @@ function buildFile(path,file){
 }
 var clearInfo = function(file){
 
+  $("#gameDescription").empty();
   $("#gameDescription").hide();
   $("#gameYear").hide();
   $("#gameRating").hide();
